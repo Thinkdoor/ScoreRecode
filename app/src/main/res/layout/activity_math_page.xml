@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_math_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/icon_fragment_bg"
+    tools:context="com.example.administrator.scorerecode.MainPage">
+
+    <!--输入框板块-->
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:layout_marginLeft="-25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请选择科目："
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"/>
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/languages"
+                />
+
+        </LinearLayout>
+
+        <!--考试名称-->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="考试名称："
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"/>
+
+            <EditText
+                android:id="@+id/et_cn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入考试名称"
+                android:textColor="@color/colorBlack"/>
+
+        </LinearLayout>
+
+        <!--考试成绩-->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="考试成绩："
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"/>
+
+            <EditText
+                android:id="@+id/et_sc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="请输入考试成绩"
+                android:textColor="@color/colorBlack"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_insert"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="录入"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/icon_button"/>
+    </LinearLayout>
+
+
+    
+    
+<!--底部按钮区域-->
+<LinearLayout    
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:text="成绩单"
+        android:background="@drawable/icon_my_self"
+        android:onClick="intoScores"/>
+</LinearLayout>
+    
+</RelativeLayout>
