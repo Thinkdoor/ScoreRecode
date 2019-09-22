@@ -115,7 +115,35 @@ public class DBController{
         sqLiteDatabase.close();
 
         //4.提示
-        ToastUtil.showMsg(context,"count = "+count);
+        ToastUtil.showMsg(context,"一共有"+count+"条数据");
         return scores;
+    }
+
+    /**
+     * 删除数据
+     *
+     * @param EN 考试名称
+     */
+    public void testDeleteDate(String EN) {
+        ScoreDB scoreDB = new ScoreDB(context,2);
+        //1.得到连接
+        SQLiteDatabase sqLiteDatabase = scoreDB.getReadableDatabase();
+
+        //2.执行delete
+        String where = "EN = ?";
+        String[] value = new String[]{EN};
+        //返回删除的数量
+        /**
+         * 第一个参数：表名
+         * 第二个参数：删除的where后的语句
+         * 第三个参数：? 所代表的值
+         */
+        int deleteCount = sqLiteDatabase.delete("tb_score",where,value);
+
+        //3.关闭连接
+        sqLiteDatabase.close();
+
+        //4.提示
+        ToastUtil.showMsg(context,"删除了"+deleteCount+"条记录");
     }
 }

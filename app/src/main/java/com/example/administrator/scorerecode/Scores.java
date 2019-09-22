@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ public class Scores extends AppCompatActivity {
     TextView textView;
     DBController dbController;
     ListView listView;
+    String cn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +30,7 @@ public class Scores extends AppCompatActivity {
         //获取对应的课程名称
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String cn = bundle.getString("cn");
+        cn = bundle.getString("cn");
 
         textView = (TextView) findViewById(R.id.tv);
         textView.setText(cn+"成绩单");
@@ -35,6 +38,16 @@ public class Scores extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(new ScoreAdapter(list,getApplication()));
 
-
+        //长按删除成绩
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //通过 课程名 获取到要删除的是哪门课
+                Score score = dbController.testQueryDate(cn).get(i);
+                //根据 考试名称 删除对应的数据
+                dbController.testDeleteDate(score.EN);
+                return false;
+            }
+        });
     }
 }

@@ -82,8 +82,9 @@ public class MainPage extends AppCompatActivity {
                 }else{
                     dbcontroller.testInsertDate(cn, en, score);
                     ToastUtil.showMsg(getApplicationContext(), "录入成功！");
-                    editText.setText("");
                     editText1.setText("");
+                    editText.setText("");
+                    editText.requestFocus();
                 }
             }
         });
